@@ -7,11 +7,10 @@
          <li class="list-group-item d-flex justify-content-between mb-4">
           <div>
             <h2><%= recipe.name %></h2>
-            <% if can? :destroy, recipe %>
+            <% if can? :destroy ,recipe %>
             <div class="d-flex">
               <%= link_to  "DETAILS", recipe_path(recipe), class:"btn btn-primary me-4" %>
               <%= button_to "REMOVE", recipe, method: :delete, class:"btn btn-danger me-4" %></td>
-
             </div>
             <% end %>
           </div>
