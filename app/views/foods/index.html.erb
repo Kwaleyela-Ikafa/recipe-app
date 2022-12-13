@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Foods</h1>
+
+<div id="foods">
+  <% if @foods.empty? %>
+
+    <h3 class="text-center">You have no food yet!</h3>
+    <p class="text-center">Try adding from the New food button below</p>
+
+  <% else %>
+
+    <% @foods.each do |food| %>
+      <%= render food %>
+      <%= button_to "Destroy this food", food, method: :delete %>
+      <p><%= link_to "Show this food", food %></p>
+    <% end %>
+
+  <% end %>
+</div>
+
+<%= link_to "New food",  new_food_path %>
