@@ -1,22 +1,33 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Foods</h1>
-
-<div id="foods">
-  <% if @foods.empty? %>
-
-    <h3 class="text-center">You have no food yet!</h3>
-    <p class="text-center">Try adding from the New food button below</p>
-
-  <% else %>
-
-    <% @foods.each do |food| %>
-      <%= render food %>
-      <%= button_to "Destroy this food", food, method: :delete %>
-      <p><%= link_to "Show this food", food %></p>
-    <% end %>
-
-  <% end %>
+<%# <p style="color: green"><%= notice %</p> %>
+<%= render 'shared/navbar' %>
+<div class="container">
+  <button class="column mt-6 is-offset-11"><%= link_to "Add Food",  new_food_path %></button>
+  
+  <div class=" columns mt-6 is-centered">
+    <% if @foods.empty? %>
+  
+      <h3 class="text-center">You have no food yet!</h3>
+      <p class="text-center">Try adding from the New food button below</p>
+  
+    <% else %>
+  <table class="table is-bordered is-striped">
+    <thead>
+      <th><strong>Food</strong></th>
+      <th><strong>Measurement unit</strong></th>
+      <th><strong>Unit Price</strong></th>
+      <th><strong>Quantity</strong></th>
+      <th><strong>Actions</strong></th>
+    <thead>
+    <tbody>
+      <% @foods.each do |food| %>
+      <tr>
+        <%= render food %>
+        <td><%= button_to "Destroy this food", food, method: :delete %></td>
+      <% end %>
+  
+      <% end %>
+      </tr>
+    </tbody>
+  </table>
+  </div>
 </div>
-
-<%= link_to "New food",  new_food_path %>
