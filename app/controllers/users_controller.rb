@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to new_user_registration_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   # Only allow a list of trusted parameters through.
