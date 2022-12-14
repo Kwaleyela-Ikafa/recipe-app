@@ -3,9 +3,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
 
+gem 'cancancan', '~> 1.9'
+
+gem 'childprocess'
+
 gem 'devise'
 
 gem 'rubocop', '>= 1.0', '< 2.0'
+
+gem 'sassc-rails'
 
 gem 'rails-controller-testing'
 
