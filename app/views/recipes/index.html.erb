@@ -1,7 +1,12 @@
 <div class = "forms">
   <h1> Welcome to your Recipes!</h1>
   <div class="container">
-      <%= link_to  "Add a recipe", new_recipe_path, class:"btn btn-primary mb-4" %>
+    <% if @recipes.empty? %>
+
+    <h3 class="text-center">You have no Recipes yet!</h3>
+    <p class="text-center">Try adding from the Add recipe food button below</p>
+
+    <% else %>
       <% @recipes.each do |recipe| %>
       <ul class="list-group">
          <li class="list-group-item d-flex justify-content-between mb-4">
@@ -17,6 +22,8 @@
             <p class="ms-4"><%= recipe.description %></p>
          </li>
       </ul>
-      <%end%>
+      <% end %>
+      <% end %>
+      <%= link_to  "Add a recipe", new_recipe_path, class:"btn btn-primary mb-4" %>
   </div>
 </div>
