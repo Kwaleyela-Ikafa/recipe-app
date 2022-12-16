@@ -1,0 +1,32 @@
+<%= render 'shared/navbar' %>
+
+<div class="container content mt-6">
+    <h1 class="mb-4">Shopping List</h1>
+    <div class="is-flex is-justify-content-space-between mt-4">
+     <h6>Amount of food items to buy: <%=@foods.size %></h6>
+     <% sum = 0 %>
+     <% @foods.each do |food| %>
+        <% sum += food.food.price * food.quantity %>
+     <% end %>
+     <h6>Total value of food needed: $<%= sum %></h6>
+    </div>
+  <table class="table is-bordered is-striped">
+  <thead>
+    <tr>
+      <th class="col">Food</th>
+      <th class="col">Quantity</th>
+      <th class="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% @foods.each do |food| %>
+    <tr>
+      <td><%= food.food.name %></td>
+      <td><%= "#{food.food.quantity} #{food.food.measurement_unit}" %></td>
+      <td>$<%= food.food.price %></td>
+      </td>
+    </tr>
+     <% end %>
+  </tbody>
+</table>
+</div>

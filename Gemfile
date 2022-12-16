@@ -3,7 +3,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
 
+gem 'cancancan', '~> 1.9'
+
+gem 'childprocess'
+
+gem 'devise'
+
 gem 'rubocop', '>= 1.0', '< 2.0'
+
+gem 'sassc-rails'
 
 gem 'rails-controller-testing'
 
@@ -61,6 +69,7 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'bullet', '~> 7.0'
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
