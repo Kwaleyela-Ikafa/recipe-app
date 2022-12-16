@@ -19,8 +19,10 @@
   <p class="mt-5">Steps go here....<p>
 
   <div class="is-flex is-justify-content-space-aroun mt-5">
-    <%= link_to  "Generate shopping list", recipe_recipe_foods_path(@recipe.id), class:"button is-primary" %>
-    <%= link_to  "Add Ingredient", new_recipe_recipe_food_path(@recipe.id), class:"button is-primary ml-6" %>
+    <% if @recipe.user == current_user %>
+      <%= link_to  "Generate shopping list", recipe_recipe_foods_path(@recipe.id), class:"button is-primary" %>
+      <%= link_to  "Add Ingredient", new_recipe_recipe_food_path(@recipe.id), class:"button is-primary ml-6" %>
+    <% end %>
   </div>
   <hr class="my-5 py-1 bg-dark"/>
   <table class="table is-bordered is-striped">
@@ -39,7 +41,7 @@
       <td class="col"><%= recipe.quantity %></td>
       <td class="col">$<%= recipe.quantity * recipe.food.price %></td>
       <td class="col d-flex">
-         <%= link_to  "MODIFY", recipe_path(@recipe), class:"btn btn-primary me-4" %>
+         <%# <%= link_to  "MODIFY", recipe_path(@recipe), class:"btn btn-primary me-4" % %>
          <%= button_to "REMOVE", recipe_recipe_food_path(@recipe.id, recipe.id), method: :delete, class:"btn btn-danger" %>
       </td>
     </tr>

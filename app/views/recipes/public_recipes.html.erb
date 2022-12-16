@@ -11,7 +11,7 @@
     <div class="recipes columns mt-4 box">
         <div class="column">
           <h2><%= link_to (recipe.name), recipe_path(recipe)%></h2>
-          <p class="mt-5">by: <%= current_user.name %></p>
+          <p class="mt-5">by: <%= recipe.user.name %></p>
           <% if can? :manage, recipe %>
            <%= button_to "REMOVE", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure?" }, class: "button is-danger" %>
           <% end %>
