@@ -17,8 +17,12 @@
         Food
       </a>
 
-      <a class="navbar-item">
+      <a href="<%= recipes_path %>" class="navbar-item">
         Recipes
+      </a>
+
+      <a href="<%= public_recipes_path %>" class="navbar-item">
+        Public Recipes
       </a>
 
       <a href="<%= users_path %>" class="navbar-item">
@@ -32,8 +36,8 @@
         <div class="buttons">
 
           <% if user_signed_in? %>
-            <p class="button is-danger">
-              <strong><%= link_to "Sign out", '/users/sign_out', method: :delete %></strong>
+            <p>
+              <strong><%= button_to "Sign out", '/users/sign_out', method: :delete, class:"button is-danger" %></strong>
             </p>
           <% else %>
             <a href="<%= new_user_registration_path %>" class="button is-primary">
