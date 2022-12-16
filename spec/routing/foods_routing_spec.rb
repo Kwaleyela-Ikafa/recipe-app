@@ -21,6 +21,5 @@ RSpec.describe FoodsController, type: :routing do
     it 'routes to #create' do
       expect(post: '/foods').to route_to('foods#create')
     end
-
   end
 end
