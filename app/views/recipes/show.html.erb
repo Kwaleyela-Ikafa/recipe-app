@@ -4,7 +4,15 @@
   <h1 class="align-self-center"><%= @recipe.name %></h1>
   <div class="is-flex is-justify-content-space-between mt-5">
     <h6>Preparation time: <%= @recipe.preparation_time %></h6>
-    <button class="button">Public</button>
+
+    <label class="inline-flex relative items-center mb-5 cursor-pointer">
+      <% if @recipe.public %>
+        <input type="checkbox" value="" class="sr-only peer" checked disabled> Public
+      <%else%>
+        <input type="checkbox" value="" class="sr-only peer" disabled> Not Public
+      <% end %>
+    </label>
+
   </div>
   <h6>Cooking time: <%= @recipe.cooking_time %></h6>
   <%# <%= @recipe.description % %>

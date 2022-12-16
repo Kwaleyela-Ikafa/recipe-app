@@ -3,25 +3,22 @@
 
   <h1 class="">Public Recipes</h1>
   
-  <div id="recipes">
   <% if @recipes.empty? %>
   <p class="">Sorry, there are no public recipes at the moment. Check back later.</p>
   <% end %>
-  <div class=" is-flex is-flex-direction-column is-align-items-center px-8">
-    <% @recipes.each do |recipe| %>
-      <div class="border-green-800">
-      <div class="font-semibold text-l"><%= link_to (recipe.name), recipe_path(recipe)%></div>
-      <% if can? :manage, recipe %>
-      <div class="py-4 text-red-600 text-l"><%= button_to "REMOVE", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure?" } %></div>
-      <% end %>
-      </div>
-      <div>
-        <p class=""><%= recipe.description %></p>
-      </div>
-      <div class="border"></div>
-      <br />
-      <br />
-    <% end %>
+
+  <% @recipes.each do |recipe| %>
+    <div class="recipes columns mt-4 box">
+        <div class="column">
+          <h2><%= link_to (recipe.name), recipe_path(recipe)%></h2>
+          <p class="mt-5">by: <%= current_user.name %></p>
+          <% if can? :manage, recipe %>
+           <%= button_to "REMOVE", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure?" }, class: "button is-danger" %>
+          <% end %>
+        </div>
+        <div class="description column mr-6">
+          <p class=""><%= recipe.description %></p>
+        </div> 
     </div>
-  </div>
+  <% end %>
 </div>

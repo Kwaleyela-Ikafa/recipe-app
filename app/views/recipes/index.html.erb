@@ -9,7 +9,7 @@
 
     <% else %>
       <% @recipes.each do |recipe| %>
-      <div class="recipes columns mt-4">
+      <div class="recipes columns mt-4 box">
           <div class="column">
             <h2><%= recipe.name %></h2>
             <% if can? :destroy ,recipe %>

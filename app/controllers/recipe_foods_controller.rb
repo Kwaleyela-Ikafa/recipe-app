@@ -13,7 +13,7 @@ class RecipeFoodsController < ApplicationController
   end
 
   def show
-    @recipe_food = RecipeFood.find(params[:id])
+    @recipe_food = RecipeFood.includes([:food]).find(params[:id])
   end
 
   def create
@@ -32,7 +32,7 @@ class RecipeFoodsController < ApplicationController
   end
 
   def destroy
-    @recipe_food = RecipeFood.find(params[:id])
+    @recipe_food = RecipeFood.includes([:food]).find(params[:id])
     recipe_id = @recipe_food.recipe_id
     @recipe_food.destroy
     redirect_to recipe_path(recipe_id), notice: 'Food was successfully destroyed.'
