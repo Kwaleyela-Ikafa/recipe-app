@@ -1,18 +1,29 @@
-<div class="d-flex flex-column">
-  <h1 class="align-self-center"><%= @recipe.name %></h1>
-  <div class="d-flex justify-content-between mt-5">
-    <h4>Preparation time: <%= @recipe.preparation_time %></h4>
-    <button class="btn btn-secondary">Public</button>
-  </div>
-  <h4>Cooking time: <%= @recipe.cooking_time %></h4>
-  <%= @recipe.description %>
+<%= render 'shared/navbar' %>
 
-  <div class="d-flex justify-content-between mt-5">
-    <%= link_to  "Generate shopping list", recipe_recipe_foods_path(@recipe.id), class:"btn btn-primary me-4" %>
-    <%= link_to  "Add Ingredient", new_recipe_recipe_food_path(@recipe.id), class:"btn btn-primary me-4" %>
+<div class="container content mt-6">
+  <h1 class="align-self-center"><%= @recipe.name %></h1>
+  <div class="is-flex is-justify-content-space-between mt-5">
+    <h6>Preparation time: <%= @recipe.preparation_time %></h6>
+
+    <label class="inline-flex relative items-center mb-5 cursor-pointer">
+      <% if @recipe.public %>
+        <input type="checkbox" value="" class="sr-only peer" checked disabled> Public
+      <%else%>
+        <input type="checkbox" value="" class="sr-only peer" disabled> Not Public
+      <% end %>
+    </label>
+
+  </div>
+  <h6>Cooking time: <%= @recipe.cooking_time %></h6>
+  <%# <%= @recipe.description % %>
+  <p class="mt-5">Steps go here....<p>
+
+  <div class="is-flex is-justify-content-space-aroun mt-5">
+    <%= link_to  "Generate shopping list", recipe_recipe_foods_path(@recipe.id), class:"button is-primary" %>
+    <%= link_to  "Add Ingredient", new_recipe_recipe_food_path(@recipe.id), class:"button is-primary ml-6" %>
   </div>
   <hr class="my-5 py-1 bg-dark"/>
-  <table class="table table-striped table-hover table-bordered border-dark">
+  <table class="table is-bordered is-striped">
   <thead class="container">
     <tr class="row">
       <th class="col">Food</th>

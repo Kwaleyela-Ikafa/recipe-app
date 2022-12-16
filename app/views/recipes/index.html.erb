@@ -1,29 +1,27 @@
-<div class = "forms">
+<%= render 'shared/navbar' %>
+
+<div class = "container content mt-5 pb-6">
   <h1> Welcome to your Recipes!</h1>
-  <div class="container">
     <% if @recipes.empty? %>
 
-    <h3 class="text-center">You have no Recipes yet!</h3>
-    <p class="text-center">Try adding from the Add recipe food button below</p>
+    <h3 class="">You have no Recipes yet!</h3>
+    <p class="">Try adding from the Add recipe food button below</p>
 
     <% else %>
       <% @recipes.each do |recipe| %>
-      <ul class="list-group">
-         <li class="list-group-item d-flex justify-content-between mb-4">
-          <div>
+      <div class="recipes columns mt-4 box">
+          <div class="column">
             <h2><%= recipe.name %></h2>
             <% if can? :destroy ,recipe %>
-            <div class="d-flex">
-              <%= link_to  "DETAILS", recipe_path(recipe), class:"btn btn-primary me-4" %>
-              <%= button_to "REMOVE", recipe, method: :delete, class:"btn btn-danger me-4" %></td>
-            </div>
+              <%= link_to  "DETAILS", recipe_path(recipe), class:"mt-2" %>
+              <%= button_to "REMOVE", recipe, method: :delete, class:"button is-danger is-small mt-2" %></td>
             <% end %>
           </div>
-            <p class="ms-4"><%= recipe.description %></p>
-         </li>
-      </ul>
+          <div class="description column mr-6">
+            <p class=""><%= recipe.description %></p>
+          </div> 
+      </div>
       <% end %>
       <% end %>
-      <%= link_to  "Add a recipe", new_recipe_path, class:"btn btn-primary mb-4" %>
-  </div>
+      <%= link_to  "Add a recipe", new_recipe_path, class:"button is-primary" %>
 </div>
